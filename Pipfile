@@ -10,8 +10,6 @@ fastapi = "*"
 aiohttp = "*"
 dateparser = "*"
 uvicorn = "*"
-cachetools = "*"
-asyncache = "*"
 gunicorn = "*"
 python-dotenv = "*"
 

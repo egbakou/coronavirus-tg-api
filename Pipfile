@@ -6,6 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+fastapi = "*"
+aiohttp = "*"
+dateparser = "*"
+uvicorn = "*"
+cachetools = "*"
+asyncache = "*"
+gunicorn = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"

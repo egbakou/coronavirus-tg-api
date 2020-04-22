@@ -4,7 +4,7 @@ app.services.covidgouvtg.py
 import logging
 
 import dateparser
-from aiohttp import ClientError
+from aiohttp import ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError
 from bs4 import BeautifulSoup
 
 from ..utils import httputils
@@ -55,15 +55,15 @@ async def fetch_data():
                     "last_updated": updated_date.__str__}
         else:
             # ALERT!! Send notification to Admin
-            LOGGER.error("ALERT!! TimInfo tag changed...")
-            return None;
+            LOGGER.error("ALERT!! TimInfo tag changed...", exc_info=True)
+            return None
 
     # Never Trust HTML
-    except ClientError:
+    except (ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError):
         # ALERT!! Send notification to Admin
         LOGGER.exception("ALERT!! Client Error..." )
         return None
     except ValueError:
         # ALERT!! Send notification to Admin
-        LOGGER.exception("ALERT!! Conversion error when normalizing data...")
+        LOGGER.exception("ALERT!! Conversion error when parsing or normalizing data...")
         return None

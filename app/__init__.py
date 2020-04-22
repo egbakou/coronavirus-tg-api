@@ -1,7 +1,7 @@
 """
-Corona Virus Tracker API
+Coronavirus Tracker API
 ~~~~~~~~~~~~~~~~~~~~~~~~
-API for tracking the global coronavirus (COVID-19, SARS-CoV-2) outbreak in Togo.
+API for tracking the coronavirus (COVID-19, SARS-CoV-2) outbreak in Togo.
 """
 import logging
 

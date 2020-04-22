@@ -13,7 +13,6 @@ LOGGER = logging.getLogger("services.covidgouvtg")
 
 # Base URL for fetching data.
 BASE_URL = "https://covid19.gouv.tg"
-CURRENT_API_PROJECT_URL = "https://github.com/egbakou/coronavirus-tg-api"
 
 
 async def fetch_data():
@@ -55,7 +54,7 @@ async def fetch_data():
     # Never Trust HTML
     except (ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError):
         # ALERT!! Send notification to Admin
-        LOGGER.exception("ALERT!! Client Error..." )
+        LOGGER.exception("ALERT!! Client Error...")
         return None
     except ValueError:
         # ALERT!! Send notification to Admin

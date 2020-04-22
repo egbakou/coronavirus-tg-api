@@ -31,5 +31,5 @@ async def get_sources():
     """
     Getting data-sources: Government website and the tracker api project
     """
-    return {"gouv_tg": BASE_URL,
-            "tracker_api": CURRENT_API_PROJECT_URL}
+    return {"government_website": BASE_URL,
+            "tracker_api_project": CURRENT_API_PROJECT_URL}

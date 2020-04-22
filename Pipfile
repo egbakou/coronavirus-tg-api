@@ -16,3 +16,11 @@ beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+dev = "uvicorn app.main:APP --reload"
+start = "uvicorn app.main:APP"
+fmt = "invoke fmt"
+sort = "invoke sort"
+lint = "invoke lint"
+test = "invoke test"

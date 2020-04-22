@@ -12,6 +12,7 @@ dateparser = "*"
 uvicorn = "*"
 gunicorn = "*"
 python-dotenv = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.8"

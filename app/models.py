@@ -42,5 +42,5 @@ class SourcesResponse(BaseModel):
     """
     Response for sources data endpoint
     """
-    source_id: str
-    source_link: str
+    government_website: str
+    tracker_api_project: str

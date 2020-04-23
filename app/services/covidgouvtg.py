@@ -25,7 +25,7 @@ async def fetch_data():
     try:
         # Request the html page
         LOGGER.info("covid19.gouv.tg Requesting data...")
-        async with httputils.CLIENT_SESSION.get(BASE_URL) as response:
+        async with httputils.CLIENT_SESSION.get(BASE_URL, ssl=False) as response:
             html = await response.text()
             soup = BeautifulSoup(html, "html.parser")
         LOGGER.info(BASE_URL + " html parsed...")
@@ -46,10 +46,9 @@ async def fetch_data():
 
         # Return the final data.
         return {"confirmed": confirmed,
-                "deaths": deaths,
                 "recovered": recovered,
-                "active_cases": active_cases,
-                "last_updated": updated_date.__str__}
+                "deaths": deaths,
+                "last_updated": updated_date.__str__()}
 
     # Never Trust HTML
     except (ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError):

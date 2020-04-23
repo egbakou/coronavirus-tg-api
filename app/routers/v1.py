@@ -3,7 +3,7 @@ import json
 
 from fastapi import APIRouter, HTTPException
 
-from ..models import CasesResponse
+from ..models import CasesResponse, ConfirmedResponse, RecoveredResponse, DeathsResponse
 from ..services.covidgouvtg import fetch_data
 
 V1 = APIRouter()
@@ -29,7 +29,7 @@ async def get_cases_overview():
                             detail="No data found ! Government website structure is probably changed.")
 
 
-@V1.get("/cases/confirmed")
+@V1.get("/cases/confirmed", response_model=ConfirmedResponse)
 async def get_confirmed_data():
     """
     Getting confirmed data.
@@ -43,7 +43,7 @@ async def get_confirmed_data():
                             detail="No data found ! Government website structure is probably changed.")
 
 
-@V1.get("/cases/recovered")
+@V1.get("/cases/recovered", response_model=RecoveredResponse)
 async def get_recovered_data():
     """
     Getting recoved data
@@ -57,7 +57,7 @@ async def get_recovered_data():
                             detail="No data found ! Government website structure is probably changed.")
 
 
-@V1.get("/cases/deaths")
+@V1.get("/cases/deaths", response_model=DeathsResponse)
 async def get_deaths_data():
     """
     Getting deaths data

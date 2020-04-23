@@ -36,3 +36,11 @@ class DeathsResponse(BaseModel):
     """
     deaths: int
     last_updated: str
+
+
+class SourcesResponse(BaseModel):
+    """
+    Response for sources data endpoint
+    """
+    source_id: str
+    source_link: str

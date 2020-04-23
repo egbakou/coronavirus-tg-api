@@ -1,5 +1,4 @@
 """app.routers.v1.py"""
-import json
 
 from fastapi import APIRouter, HTTPException
 
@@ -24,8 +23,7 @@ async def get_cases_overview():
     print(data)
     if data:
         return data
-    else:
-        raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
+    raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
 
 
 @V1.get("/cases/confirmed", response_model=ConfirmedResponse)
@@ -36,8 +34,7 @@ async def get_confirmed_data():
     data = await fetch_data()
     if data:
         return {"confirmed": data["confirmed"], "last_updated": data["last_updated"]}
-    else:
-        raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
+    raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
 
 
 @V1.get("/cases/recovered", response_model=RecoveredResponse)
@@ -48,8 +45,7 @@ async def get_recovered_data():
     data = await fetch_data()
     if data:
         return {"recovered": data["recovered"], "last_updated": data["last_updated"]}
-    else:
-        raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
+    raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
 
 
 @V1.get("/cases/deaths", response_model=DeathsResponse)
@@ -60,8 +56,7 @@ async def get_deaths_data():
     data = await fetch_data()
     if data:
         return {"deaths": data["deaths"], "last_updated": data["last_updated"]}
-    else:
-        raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
+    raise HTTPException(status_code=404, detail="No data found ! Government website structure is probably changed.")
 
 
 @V1.get("/sources", response_model=SourcesResponse)

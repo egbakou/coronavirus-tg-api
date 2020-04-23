@@ -4,7 +4,7 @@ app.services.covidgouvtg.py
 import logging
 
 import dateparser
-from aiohttp import ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError
+from aiohttp import ClientConnectionError, ClientConnectorSSLError, ClientHttpProxyError
 from bs4 import BeautifulSoup
 
 from ..utils import httputils
@@ -31,24 +31,26 @@ async def fetch_data():
         LOGGER.info(BASE_URL + " html parsed...")
 
         # Find data in the html code based on tag's id and classes
-        elements = soup.find(id='timeinfo').find_all(class_='elementor-heading-title elementor-size-default')
+        elements = soup.find(id="timeinfo").find_all(class_="elementor-heading-title elementor-size-default")
         date_french_string = elements[0].contents[0].split("jour")[1].strip()
         hour_french_string = elements[1].contents[0]
-        updated_date = dateparser.parse(date_french_string + ' ' + hour_french_string)
+        updated_date = dateparser.parse(date_french_string + " " + hour_french_string)
         LOGGER.info(BASE_URL + " Data received...")
 
         # Normalize data
-        active_cases = int(soup.find(id='active-cases').find('h2').contents[0])
-        recovered = int(soup.find(id='cured').find('h2').contents[0])
-        deaths = int(soup.find(id='deceased').find('h2').contents[0])
-        confirmed = int(soup.find(id='total-case').find('h2').contents[0])
+        active_cases = int(soup.find(id="active-cases").find("h2").contents[0])
+        recovered = int(soup.find(id="cured").find("h2").contents[0])
+        deaths = int(soup.find(id="deceased").find("h2").contents[0])
+        confirmed = int(soup.find(id="total-case").find("h2").contents[0])
         LOGGER.info(BASE_URL + " Data normalized...")
 
         # Return the final data.
-        return {"confirmed": confirmed,
-                "recovered": recovered,
-                "deaths": deaths,
-                "last_updated": updated_date.__str__()}
+        return {
+            "confirmed": confirmed,
+            "recovered": recovered,
+            "deaths": deaths,
+            "last_updated": updated_date.__str__(),
+        }
 
     # Never Trust HTML
     except (ClientConnectionError, ClientHttpProxyError, ClientConnectorSSLError):

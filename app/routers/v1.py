@@ -3,7 +3,7 @@ import json
 
 from fastapi import APIRouter, HTTPException
 
-from ..models import LatestResponse
+from ..models import CasesResponse
 from ..services.covidgouvtg import fetch_data
 
 V1 = APIRouter()
@@ -14,7 +14,7 @@ BASE_URL = "https://covid19.gouv.tg"
 CURRENT_API_PROJECT_URL = "https://github.com/egbakou/coronavirus-tg-api"
 
 
-@V1.get("/cases", response_model=LatestResponse)
+@V1.get("/cases", response_model=CasesResponse)
 async def get_cases_overview():
     """
         Getting total of confirmed cases, deaths, recovered and the last

@@ -3,7 +3,7 @@ import json
 
 from fastapi import APIRouter, HTTPException
 
-from ..models import CasesResponse, ConfirmedResponse, RecoveredResponse, DeathsResponse
+from ..models import CasesResponse, ConfirmedResponse, RecoveredResponse, DeathsResponse, SourcesResponse
 from ..services.covidgouvtg import fetch_data
 
 V1 = APIRouter()
@@ -71,7 +71,7 @@ async def get_deaths_data():
                             detail="No data found ! Government website structure is probably changed.")
 
 
-@V1.get("/sources")
+@V1.get("/sources", response_model=SourcesResponse)
 async def get_sources():
     """
     Getting data-sources: Government website and the tracker api project

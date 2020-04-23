@@ -4,6 +4,20 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+async-asgi-testclient = "*"
+async_generator = "*"
+asyncmock = "*"
+bandit = "*"
+black = "==19.10b0"
+coveralls = "*"
+importlib-metadata = {version = "*",markers = "python_version<'3.8'"}
+invoke = "*"
+isort = "*"
+pylint = "*"
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+responses = "*"
 
 [packages]
 fastapi = "*"

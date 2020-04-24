@@ -76,7 +76,7 @@ def generate_reqs(ctx):
 
 
 @invoke.task
-def docker(ctx, build=False, run=False, tag="covid-tracker-api:latest", name=f"covid-api-{random.randint(0,999)}"):
+def docker(ctx, build=False, run=False, tag="covid-tg-api:latest", name=f"covid-tg-api-{random.randint(0,999)}"):
     """Build and run docker container."""
     if not any([build, run]):
         raise invoke.Exit(message="Specify either --build or --run", code=1)

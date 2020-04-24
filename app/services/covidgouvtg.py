@@ -28,21 +28,21 @@ async def fetch_data():
         async with httputils.CLIENT_SESSION.get(BASE_URL, ssl=False) as response:
             html = await response.text()
             soup = BeautifulSoup(html, "html.parser")
-        LOGGER.info(BASE_URL + " html parsed...")
+        LOGGER.info(msg="%s html parsed..." % BASE_URL)
 
         # Find data in the html code based on tag's id and classes
         elements = soup.find(id="timeinfo").find_all(class_="elementor-heading-title elementor-size-default")
         date_french_string = elements[0].contents[0].split("jour")[1].strip()
         hour_french_string = elements[1].contents[0]
         updated_date = dateparser.parse(date_french_string + " " + hour_french_string)
-        LOGGER.info(BASE_URL + " Data received...")
+        LOGGER.info(msg="%s Data received..." % BASE_URL)
 
         # Normalize data
-        active_cases = int(soup.find(id="active-cases").find("h2").contents[0])
+        # active_cases = int(soup.find(id="active-cases").find("h2").contents[0])
         recovered = int(soup.find(id="cured").find("h2").contents[0])
         deaths = int(soup.find(id="deceased").find("h2").contents[0])
         confirmed = int(soup.find(id="total-case").find("h2").contents[0])
-        LOGGER.info(BASE_URL + " Data normalized...")
+        LOGGER.info(msg="%s Data normalized..." % BASE_URL)
 
         # Return the final data.
         return {

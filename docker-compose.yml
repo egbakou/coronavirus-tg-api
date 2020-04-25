@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  api:
+    build: .
+    image: egbakou/coronavirus-tg-api:1.0
+    restart: always
+    volumes:
+      - .:/api
+    ports:
+      - "80:80"
+    stdin_open: true
+    tty: true

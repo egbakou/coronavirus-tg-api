@@ -5,12 +5,12 @@ services:
     build: .
     image: egbakou/coronavirus-tg-api:1.0
     container_name: covid-tg
-    command: uvicorn app.main:APP --host 0.0.0.0 --port 8000
+    #command: uvicorn app.main:APP --host 0.0.0.0 --port 8000
     restart: always
     volumes:
       - .:/api
     ports:
-      - 8000:8000
+      - 80:80
     stdin_open: true
     tty: true
 

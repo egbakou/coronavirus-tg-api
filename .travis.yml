@@ -1,0 +1,53 @@
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+services:
+  - docker
+install:
+  - "pip install pipenv"
+  - "pipenv install --dev --skip-lock"
+script:
+  - "make test"
+  - "make lint"
+  - "make check-fmt"
+
+# Create Docker image for our app and push it to Dockerhub repository and send messages to the Teams channel after the `script` job is successfully executed
+after_success:
+  - coveralls
+  - export COMMIT=${TRAVIS_COMMIT::7}
+  - export TAG=`if [ ! -z "$TRAVIS_TAG" ]; then echo "$TRAVIS_TAG"; else echo "$TRAVIS_BRANCH--$COMMIT"; fi`
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker-compose build
+  - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
+  - docker push $IMAGE_NAME:$TAG
+  - export TITLE="$IMAGE_NAME:$TAG is built properly and pushed to Dockerhub"
+  - export TIMESTAMP=`date`
+  - export GIT_LOG=`git log -1 --pretty=%B $COMMIT`
+  - export TEXT="[build version] $TAG<br />[datetime] $TIMESTAMP<br />[changelog] $GIT_LOG<br />"
+  #- chmod +x send_to_teams.sh && ./send_to_teams.sh
+  - bash ./telegram_notification.sh
+
+
+# If the `script` job fails, it will send a failure message to Teams channel
+after_failure:
+  - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
+  - export TEXT=[datetime]:`date`
+
+# Allow Travis to help deploy the app on Heroku
+deploy:
+  provider: heroku
+  api-key:
+    secure: "$HEROKU_API_KEY"
+  app: coronavirus-tg-api
+  on:
+    tags: true
+    repo: "$IMAGE_NAME"
+
+# Send the message of success after the deploy is done properly
+after_deploy:
+  - export TITLE="🎉🎉🎉New version $TAG is deployed to Heroku production🎉🎉🎉"
+  - export TEXT=[datetime]:`date`
+  - bash ./telegram_notification.sh
+  #- ./send_to_teams.sh

@@ -59,12 +59,11 @@ after_failure:
 deploy:
   provider: heroku
   api-key:
-    secure: "$HEROKU_API_KEY"
+    secure: $HEROKU_API_KEY
   app: coronavirus-tg-api
   on:
     tags: true
-    repo: "$IMAGE_NAME"
-    branch: master
+    repo: $IMAGE_NAME
 
 # Send the message of success after the deploy is done properly
 after_deploy:

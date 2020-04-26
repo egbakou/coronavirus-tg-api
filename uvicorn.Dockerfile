@@ -1,5 +1,5 @@
-#FROM python:3.8-slim
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+FROM python:3.8-slim
+#FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 ENV VARIABLE_NAME APP
 

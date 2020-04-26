@@ -1,7 +1,7 @@
 language: python
 python:
-  - "3.6"
-  - "3.7"
+  #- "3.6"
+  #- "3.7"
   - "3.8"
 services:
   - docker
@@ -44,6 +44,7 @@ deploy:
   on:
     tags: true
     repo: "$IMAGE_NAME"
+    branch: master
 
 # Send the message of success after the deploy is done properly
 after_deploy:

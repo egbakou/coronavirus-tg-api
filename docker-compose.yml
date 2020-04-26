@@ -3,16 +3,16 @@ version: "3.7"
 services:
   api:
     build: .
-    image: egbakou/coronavirus-tg-api:1.0
+    image: egbakou/coronavirus-tg-api:latest
     container_name: covid-tg
     #command: uvicorn app.main:APP --host 0.0.0.0 --port 8000
-    restart: always
-    volumes:
-      - .:/api
-    ports:
-      - 80:80
-    stdin_open: true
-    tty: true
+    #restart: always
+    #volumes:
+    #  - .:/api
+    #ports:
+     # - 80:80
+    #stdin_open: true
+    #tty: true
 
   # In Microservices context Using Nginx to Access Both Services using a Single Host Address
   # Nginx reverse proxy: Not necessary on Heroku.

@@ -1,14 +1,14 @@
+#FROM python:3.8-slim
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
 ENV VARIABLE_NAME APP
 
-# COPY DEPENDENCIES
-COPY requirements.txt ./
+WORKDIR /app
 
-# COPY PROJECT
-COPY ./app /app/app
+COPY ./requirements.txt /app/requirements.txt
 
-# INSTALL DEPENDENCIES
-RUN pip install --no-cache-dir -r  requirements.txt
+RUN pip install --no-cache-dir -r  /app/requirements.txt
 
-EXPOSE 80
+COPY . /app/
+
+EXPOSE 8000

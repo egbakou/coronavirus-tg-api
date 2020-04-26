@@ -59,11 +59,12 @@ after_failure:
 deploy:
   provider: heroku
   api-key:
-    secure: $HEROKU_API_KEY
+    secure: K0IpFkUH25Z0UvAJDoMXo00WZ4qQmSgZECwmzmhbxTqwzKN8DFDSRSVkP5PloNPRda2tQGkgDHsMMMM1670N+tmfE8ibkQicxJ8cwnUCInfhF1x2VsgtbbDxM8UxIcgWpB0TxnDvFyW1f6Pz6wP8lG0NVC7GCSyKhtnGNHktyGnFN6FEqwE/X56MohfZIOIbGHEOz2FbrNc6idtEOOmcIKJ9z8w/lfqJL0YYjYikqb2IsYX+WDxyZ6bVEos/Swzzml4WoKSx2I8RCH0PVjzAWYZx20FW5K5Un1PJ/yJ0mR2SXZF0Tjf7NUKP5KnosQm4SFAGaLi/81I6JwQbEtaUQ9T1+NV2knlaL8pi/QqLbASPScvNyex15JU5HvkKRgHpR7X5oYlc78xR46GOpFS7HdYUxwduffiqzt5WFmf2qcZaoMRrZWZvyBuaDxrh7ugsVh1oGGAS5uRpeTrfx/6dUdlzHkgn9COYeQMisl3DcuVSMbvHxn3pObLrsRM4kDTWaSLwCkow796jBmTitMZAiZm0ofjryCGh+aw+zPYInDaVyVjhAndZIHziWEwXNRR7AUs3hR2FyBKmWEFRFtePFfcleAAEASAK/ucqhlH/GdzBhrtzaB6CSSVXB1lJ+2rXjw3UH/oT/KzPQPr/p/seRSavmN4Ho9dlzY8XFeLh+7o=
   app: coronavirus-tg-api
   on:
     tags: true
-    repo: $IMAGE_NAME
+    repo: egbakou/coronavirus-tg-api
+
 
 # Send the message of success after the deploy is done properly
 after_deploy:

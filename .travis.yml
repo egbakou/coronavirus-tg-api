@@ -1,8 +1,8 @@
 language: python
 python:
   #- "3.6"
-  #- "3.7"
-  - "3.8"
+  - "3.7"
+  #- "3.8"
 services:
   - docker
 install:
@@ -69,7 +69,7 @@ deploy:
 
 # Send the message of success after the deploy is done properly
 after_deploy:
-  - export TITLE="✔️✔️✔New version $TAG is deployed to Heroku production"
+  - export TITLE="✔️✔️✔️New version $TAG is deployed to Heroku production"
   - export TEXT=`date`, go to Heroku dashboard and check if the app is running !
   - bash ./telegram_notification.sh
   #- ./send_to_teams.sh

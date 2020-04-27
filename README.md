@@ -5,7 +5,7 @@
 Provides up-to-date data about Coronavirus outbreak in Togo. Includes numbers about confirmed cases, deaths and recovered.
 Support unique government source.
 
-![Travis build](https://api.travis-ci.org/egbakou/coronavirus-tg-api.svg?branch=master)[![License](https://img.shields.io/github/license/egbakou/coronavirus-tg-api)](LICENSE.md)
+![Travis build](https://api.travis-ci.org/egbakou/coronavirus-tg-api.svg?branch=master) [![License](https://img.shields.io/github/license/egbakou/coronavirus-tg-api)](LICENSE.md)
 [![GitHub stars](https://img.shields.io/github/stars/egbakou/coronavirus-tg-api)](https://github.com/egbakou/coronavirus-tg-api/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/egbakou/coronavirus-tg-api)](https://github.com/egbakou/coronavirus-tg-api/network/members)
 [![GitHub last commit](https://img.shields.io/github/last-commit/egbakou/coronavirus-tg-api)](https://github.com/egbakou/coronavirus-tg-api/commits/master)

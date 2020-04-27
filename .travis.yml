@@ -10,7 +10,7 @@ install:
   - "pipenv install --dev --skip-lock"
 script:
   - "make test"
-  - "make lint"
+  #- "make lint"
   - "make check-fmt"
 notifications:
   email: false

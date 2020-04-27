@@ -42,7 +42,7 @@ after_success:
   - docker-compose build
   - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
   - docker push $IMAGE_NAME:$TAG
-  - export TITLE="✔️✔️✔Docker image *$IMAGE_NAME:$TAG* is built properly and pushed to DockerHub."
+  - export TITLE="Docker image *$IMAGE_NAME:$TAG* is built properly and pushed to DockerHub."
   - export TIMESTAMP=`date`
   - export GIT_LOG=`git log -1 --pretty=%B $COMMIT`
   - export TEXT="[build version] $TAG this $TIMESTAMP, with the last commit message *$GIT_LOG*."
@@ -52,7 +52,7 @@ after_success:
 
 # If the `script` job fails, it will send a failure message to Teams channel
 after_failure:
-  - export TITLE="❌❌❌ Travis:$TRAVIS_JOB_ID -- build job is failed"
+  - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
   - export TEXT=`date`, go to travis dashbord to check log file for more details !
   - bash ./telegram_notification.sh
 
@@ -69,7 +69,7 @@ deploy:
 
 # Send the message of success after the deploy is done properly
 after_deploy:
-  - export TITLE="✔️✔️✔️New version $TAG is deployed to Heroku production"
+  - export TITLE="New version $TAG is deployed to Heroku production"
   - export TEXT=`date`, go to Heroku dashboard and check if the app is running !
   - bash ./telegram_notification.sh
   #- ./send_to_teams.sh

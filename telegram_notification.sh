@@ -23,6 +23,14 @@ else
     build_status="succeeded 😎 😎 😎 "
 fi
 
+if [[ $TITLE == *"Docker"* ]]; then
+  title="✔️✔️✔"$TITLE
+elif [[ $TITLE == *"New version"* ]]; then
+  title="✔️✔️✔"$TITLE
+else
+  title="❌❌❌ "$TITLE
+fi
+
 # Define send message function. parse_mode can be changed to
 # HTML, depending on how you want to format your message:
 send_msg () {
@@ -35,7 +43,7 @@ send_msg () {
 # characters, since they're reserved in bash
 send_msg "
 Travis Build **${build_status}!**
-$TITLE
+$title
 
 $TEXT
 

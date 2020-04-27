@@ -18,9 +18,9 @@ PARSE_MODE="Markdown"
 
 # Use built-in Travis variables to check if all previous steps passed:
 if [ $TRAVIS_TEST_RESULT -ne 0 ]; then
-    build_status="failed"
+    build_status="Failed 😩 😩 😩"
 else
-    build_status="succeeded"
+    build_status="succeeded 😎 😎 😎 "
 fi
 
 # Define send message function. parse_mode can be changed to
@@ -34,14 +34,12 @@ send_msg () {
 # Note that for Markdown, you need to escape any backtick (inline-code)
 # characters, since they're reserved in bash
 send_msg "
--------------------------------------
-Travis build *${build_status}!*
-Title:        $TITLE
-Details:      $TEXT
+Travis Build **${build_status}!**
+$TITLE
+
+$TEXT
+
 \`Repository:  ${TRAVIS_REPO_SLUG}\`
-\`Branch:      ${TRAVIS_BRANCH}\`
-*Commit Msg:*
-${TRAVIS_COMMIT_MESSAGE}
-[Job Log here](${TRAVIS_JOB_WEB_URL})
---------------------------------------
+\`Branch or Tag: ${TRAVIS_BRANCH}\`
+[Repo on Github](https://github.com/${TRAVIS_REPO_SLUG})
 "

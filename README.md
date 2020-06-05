@@ -27,7 +27,7 @@ All endpoints are located at ``coronavirus-tg-api.herokuapp.com/v1/`` and are ac
 You can open the URL in your browser to further inspect the response. Or you can make this curl call in your terminal to see the prettified response:
 
 ```
-curl https://coronavirus-tracker-api.herokuapp.com/v1/cases | json_pp
+curl https://coronavirus-tg-api.herokuapp.com/v1/cases | json_pp
 ```
 
 ### Swagger/OpenAPI

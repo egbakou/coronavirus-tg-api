@@ -38,10 +38,11 @@ async def fetch_data():
         LOGGER.info(msg="%s Data received..." % BASE_URL)
 
         # Normalize data
-        # active_cases = int(soup.find(id="active-cases").find("h2").contents[0])
+        active_cases = int(soup.find(id="active-cases").find("h2").contents[0])
         recovered = int(soup.find(id="cured").find("h2").contents[0])
         deaths = int(soup.find(id="deceased").find("h2").contents[0])
-        confirmed = int(soup.find(id="total-case").find("h2").contents[0])
+        # confirmed = int(soup.find(id="total-case").find("h2").contents[0])
+        confirmed = active_cases + recovered + deaths;
         LOGGER.info(msg="%s Data normalized..." % BASE_URL)
 
         # Return the final data.
